@@ -1,19 +1,16 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutAction } from '../store/userActions';
 
 const ProfileScreen = () => {
-  const isSignedIn = useSelector(state => state.userData.isSignedIn)
-  const userName = useSelector(state => state.userData.userName)
-  const dispatch = useDispatch()
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [userName, setUserName] = useState('Batman');
 
   return (
     <View style={styles.cont}>
       {isSignedIn ? (
         <View>
           <Text style={styles.text}>Hello {userName}</Text>
-          <Button title="log out" onPress={() => dispatch(logoutAction())} />
+          <Button title="log out" onPress={() => setIsSignedIn(true)} />
         </View>
       ) : (
         <View>

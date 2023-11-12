@@ -1,22 +1,9 @@
-import {Button, FlatList, ListRenderItem, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUsersBooks, loginAction } from '../store/userActions';
-import { RootState } from '../store/store';
+import { FlatList, ListRenderItem, StyleSheet, View} from 'react-native';
+import React  from 'react';
 import Book from '../components/Book';
 
 const HomeScreen = () => {
-  const {userBooks} = useSelector((state: RootState) => state.userData)
-  const dispatch = useDispatch()
-
-  console.log('==================userBooks==================');
-  console.log(JSON.stringify( userBooks, null, 2));
-  console.log('====================================');
-
-  useEffect(() => { 
-    dispatch(getUsersBooks())
-  },[])
-
+  const userBooks = []
 
   type BookItem = {
     name_of_book:string,
